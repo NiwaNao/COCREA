@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #ffffff;
+    color: #4a4a4a;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coming-soon-content {
+    text-align: center;
+}
+
+.brand-logo {
+    font-family: 'Times New Roman', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.coming-soon-text {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: #7a7a7a;
+    text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .brand-logo {
+        font-size: 3.5rem;
+    }
+
+    .coming-soon-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logo {
+        font-size: 2.5rem;
+    }
+
+    .coming-soon-text {
+        font-size: 0.9rem;
+    }
+}
