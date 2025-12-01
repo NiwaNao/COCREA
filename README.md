@@ -16,17 +16,23 @@ Vercelで`cocrea.my-artkit.com`を設定するには、以下の手順を実行�
 
 ### 2. DNS設定（重要）
 
-Vercelが表示するDNSレコードを、`my-artkit.com`のDNSプロバイダーで設定してください：
+現在、`cocrea.my-artkit.com`のAレコードが`76.76.21.21`に設定されていますが、Vercelでは**CNAMEレコードを推奨**しています。
 
-**CNAMEレコードの場合：**
-- タイプ: `CNAME`
-- 名前: `cocrea`
-- 値: Vercelが指定する値（例: `cname.vercel-dns.com` または `76.76.21.21`）
+**推奨：CNAMEレコードに変更**
+- 既存のAレコードを削除
+- 新しいCNAMEレコードを追加：
+  - タイプ: `CNAME`
+  - ホスト名: `cocrea`
+  - 値: `cname.vercel-dns.com`
+  - TTL: `3600`（またはデフォルト値）
 
-**Aレコードの場合：**
+**現在のAレコード設定（動作する場合もあります）：**
 - タイプ: `A`
-- 名前: `cocrea`
+- ホスト名: `cocrea`
 - 値: `76.76.21.21`
+- TTL: `3600`
+
+**注意：** `www.my-artkit.com`がCNAMEで`cname.vercel-dns.com`を指しているため、`cocrea`も同じCNAME設定にすることを推奨します。
 
 ### 3. よくある問題
 
@@ -43,9 +49,14 @@ Vercelが表示するDNSレコードを、`my-artkit.com`のDNSプロバイダ�
 3. **Vercelのエラーメッセージを確認**
    - ドメイン追加時に表示されるエラーメッセージを確認してください
    - よくあるエラー：
-     - "Domain not found" → DNS設定が完了していない
+     - "Domain not found" → DNS設定が完了していない、またはDNSプロパゲーション待ち
      - "Invalid domain" → ドメイン名の形式が正しくない
-     - "Domain already in use" → 他のプロジェクトで使用中
+     - "Domain already in use" → 他のVercelプロジェクトで使用中（他のプロジェクトから削除が必要）
+     - "DNS configuration error" → AレコードではなくCNAMEレコードが必要な可能性
+
+4. **AレコードからCNAMEレコードへの変更**
+   - 現在Aレコード（`76.76.21.21`）が設定されている場合、CNAMEレコード（`cname.vercel-dns.com`）に変更してみてください
+   - `www.my-artkit.com`と同じ設定方法を使用
 
 4. **Vercelのプラン確認**
    - 無料プランでもカスタムドメインは使用可能ですが、制限がある場合があります
